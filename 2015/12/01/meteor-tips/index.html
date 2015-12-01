@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: JavaScript | Jacky Notes</title>
+  <title>Meteor 包管理机制 | Jacky Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacky Notes">
-<meta property="og:url" content="http://yoursite.com/tags/JavaScript/index.html">
+  <meta name="description" content="关于 packages在一个 metor 项目里，管理包很容易。12$ metor add package$ meteor remove package
+add 一个包之后就可以直接在项目代码里面使用了。但是包的代码到底被安装到哪里了呢？其实安装 meteor 之后，会产生一个这样的目录 ~/.meteor，123├── meteor -&amp;gt; packages/meteor-tool/1.1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Meteor 包管理机制">
+<meta property="og:url" content="http://yoursite.com/2015/12/01/meteor-tips/index.html">
 <meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description">
+<meta property="og:description" content="关于 packages在一个 metor 项目里，管理包很容易。12$ metor add package$ meteor remove package
+add 一个包之后就可以直接在项目代码里面使用了。但是包的代码到底被安装到哪里了呢？其实安装 meteor 之后，会产生一个这样的目录 ~/.meteor，123├── meteor -&amp;gt; packages/meteor-tool/1.1.">
+<meta property="og:updated_time" content="2015-12-01T03:54:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacky Notes">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Meteor 包管理机制">
+<meta name="twitter:description" content="关于 packages在一个 metor 项目里，管理包很容易。12$ metor add package$ meteor remove package
+add 一个包之后就可以直接在项目代码里面使用了。但是包的代码到底被安装到哪里了呢？其实安装 meteor 之后，会产生一个这样的目录 ~/.meteor，123├── meteor -&amp;gt; packages/meteor-tool/1.1.">
   
     <link rel="alternative" href="/atom.xml" title="Jacky Notes" type="application/atom+xml">
   
@@ -190,127 +194,110 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-meteor-tips" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2015/12/01/meteor-tips/" class="article-date">
+  	<time datetime="2015-12-01T03:54:59.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Meteor 包管理机制
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Meteor/">Meteor</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/01/meteor-tips/" class="archive-article-date">
-  	<time datetime="2015-12-01T03:54:59.000Z" itemprop="datePublished">12月 1</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/01/meteor-tips/">Meteor 包管理机制</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于_packages">关于 packages</h2><p>在一个 metor 项目里，管理包很容易。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ metor <span class="built_in">add</span> <span class="keyword">package</span></span><br><span class="line">$ meteor remove <span class="keyword">package</span></span><br></pre></td></tr></table></figure></p>
+<p>add 一个包之后就可以直接在项目代码里面使用了。但是包的代码到底被安装到哪里了呢？<br>其实安装 meteor 之后，会产生一个这样的目录 <code>~/.meteor</code>，<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── meteor -&gt; packages<span class="regexp">/meteor-tool/</span><span class="number">1.1</span>.<span class="number">10</span><span class="regexp">/mt-os.osx.x86_64/m</span>eteor</span><br><span class="line">├── <span class="keyword">package</span>-metadata</span><br><span class="line">└── packages</span><br></pre></td></tr></table></figure></p>
+<p>上面的 packages 才是你在每个不同的 meteor 项目里面安装包时代码真正存放的路径。<br>然后在 add 包时会优先去查询是否已经存在，在就直接使用，不在才去下载安装。当然安装时版本号也是需要注意的。</p>
+<p>在你 add 包成功，meteor 运行项目，会把<code>~/.meteor</code>下的包代码复制到项目的<code>.meteor/local/build/programs/server/packages</code>下，然后项目才能正确使用。</p>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Meteor/">Meteor</a>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/29/use-meteor-develop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Use Accounts In Meteor development</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/10/29/use-meteor-develop/" class="archive-article-date">
-  	<time datetime="2015-10-29T14:01:23.000Z" itemprop="datePublished">10月 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/use-meteor-develop/">Use Accounts In Meteor development</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Meteor/">Meteor</a>
-	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/10/29/meteor-blaze/" class="archive-article-date">
-  	<time datetime="2015-10-29T13:59:40.000Z" itemprop="datePublished">10月 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/meteor-blaze/">关于 Meteor reactive 库 Blaze</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Meteor/">Meteor</a>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="meteor-tips" data-title="Meteor 包管理机制" data-url="http://yoursite.com/2015/12/01/meteor-tips/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 </div>
       <footer id="footer">
@@ -336,9 +323,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
