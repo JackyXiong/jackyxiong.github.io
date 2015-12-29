@@ -52,16 +52,6 @@
 							<div class="ribbon"></div>
 						</div>
 						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
 						
 					</div>
 					
@@ -72,10 +62,6 @@
 						<li>菜单</li>
 						<li>标签</li>
 						
-						<li>友情链接</li>
-						
-						
-						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -97,13 +83,15 @@
 					<nav class="header-nav">
 						<div class="social">
 							
-								<a class="github" target="_blank" href="/#" title="github">github</a>
+								<a class="github" target="_blank" href="https://github.com/JackyXiong" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+								<a class="weibo" target="_blank" href="http://weibo.com/0913jacky" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/jackyxiong" title="zhihu">zhihu</a>
 					        
-								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+								<a class="mail" target="_blank" href="mailto:xiongjiekobe@gmail.com" title="mail">mail</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Jacky0913Jacky" title="twitter">twitter</a>
 					        
 						</div>
 					</nav>
@@ -118,31 +106,7 @@
 				
 				
 				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
-			        
-			        </div>
-				</section>
-				
 
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
-				</section>
 				
 			</div>
 		</div>
@@ -177,13 +141,15 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="/#" title="github">github</a>
+						<a class="github" target="_blank" href="https://github.com/JackyXiong" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+						<a class="weibo" target="_blank" href="http://weibo.com/0913jacky" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/jackyxiong" title="zhihu">zhihu</a>
 			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+						<a class="mail" target="_blank" href="mailto:xiongjiekobe@gmail.com" title="mail">mail</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Jacky0913Jacky" title="twitter">twitter</a>
 			        
 				</div>
 			</nav>
@@ -192,11 +158,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-meteor-tips" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-meteor-config-practice" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/01/meteor-tips/" class="article-date">
-  	<time datetime="2015-12-01T03:54:59.000Z" itemprop="datePublished">2015-12-01</time>
+      <a href="/2015/12/29/meteor-config-practice/" class="article-date">
+  	<time datetime="2015-12-29T09:20:10.000Z" itemprop="datePublished">2015-12-29</time>
 </a>
     </div>
   
@@ -209,7 +175,69 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/01/meteor-tips/">Meteor 包管理机制</a>
+      <a class="article-title" href="/2015/12/29/meteor-config-practice/">meteor 开发配置实践</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在用 meteor 开发时，为了在生产环境、测试环境使用不同的配置（数据库连接、接口服务等）<br>一段时间以来都是个麻烦的问题。经过实践，总结了一个较成熟的解决办法。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Meteor/">Meteor</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/29/meteor-config-practice/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-meteor-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/28/meteor-tips/" class="article-date">
+  	<time datetime="2015-12-28T02:23:57.000Z" itemprop="datePublished">2015-12-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/28/meteor-tips/">Meteor 包管理机制</a>
     </h1>
   
 
@@ -220,8 +248,8 @@
       
         <h2 id="关于_packages">关于 packages</h2><p>在一个 metor 项目里，管理包很容易。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ metor <span class="built_in">add</span> <span class="keyword">package</span></span><br><span class="line">$ meteor remove <span class="keyword">package</span></span><br></pre></td></tr></table></figure></p>
 <p>add 一个包之后就可以直接在项目代码里面使用了。但是包的代码到底被安装到哪里了呢？<br>其实安装 meteor 之后，会产生一个这样的目录 <code>~/.meteor</code>，<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── meteor -&gt; packages<span class="regexp">/meteor-tool/</span><span class="number">1.1</span>.<span class="number">10</span><span class="regexp">/mt-os.osx.x86_64/m</span>eteor</span><br><span class="line">├── <span class="keyword">package</span>-metadata</span><br><span class="line">└── packages</span><br></pre></td></tr></table></figure></p>
-<p>上面的 packages 才是你在每个不同的 meteor 项目里面安装包时代码真正存放的路径。<br>然后在 add 包时会优先去查询是否已经存在，在就直接使用，不在才去下载安装。当然安装时版本号也是需要注意的。</p>
-<p>在你 add 包成功，meteor 运行项目，会把<code>~/.meteor</code>下的包代码复制到项目的<code>.meteor/local/build/programs/server/packages</code>下，然后项目才能正确使用。</p>
+<p>上面的 packages 才是你在每个不同的 meteor 项目里面安装包时代码真正存放的路径。<br>然后在 add 包时会优先去查询是否已经存在这个包，在就直接使用，不在才去下载安装。<br>如果你安装时指定了包的版本，那会去寻找相应的版本来安装。</p>
+<p>在你 add 包成功，meteor 运行项目，会把<code>~/.meteor</code>下的包代码复制到项目的<br><code>.meteor/local/build/programs/server/packages</code>下，然后项目才能正确使用。</p>
 
       
     </div>
