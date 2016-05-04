@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/10 | Jacky Notes</title>
+  <title>读《代码整洁之道》一些总结 | Jacky Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacky Notes">
-<meta property="og:url" content="jackyxiong.github.io/archives/2015/10/index.html">
+  <meta name="description" content="怎么写好函数？
+函数应该做一件事，只做一件事，做好一件事。
+方法：尽可能小，不断抽象，分离结构，抽象层级足够少，最好一个。
+面向对象设计五个基本原则（SOLID）之一。这些原则是：单一职责原则、开闭原则、接口隔离原则、里氏替换原则和依赖倒置原则。
+函数名通俗易懂，风格统一。
+参数越少越好。
+做什么事和检查状态应该分离，分离指令和询问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《代码整洁之道》一些总结">
+<meta property="og:url" content="jackyxiong.github.io/2016/05/04/after-read-clean-code/index.html">
 <meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description">
+<meta property="og:description" content="怎么写好函数？
+函数应该做一件事，只做一件事，做好一件事。
+方法：尽可能小，不断抽象，分离结构，抽象层级足够少，最好一个。
+面向对象设计五个基本原则（SOLID）之一。这些原则是：单一职责原则、开闭原则、接口隔离原则、里氏替换原则和依赖倒置原则。
+函数名通俗易懂，风格统一。
+参数越少越好。
+做什么事和检查状态应该分离，分离指令和询问。">
+<meta property="og:updated_time" content="2016-05-04T10:20:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacky Notes">
-<meta name="twitter:description">
+<meta name="twitter:title" content="读《代码整洁之道》一些总结">
+<meta name="twitter:description" content="怎么写好函数？
+函数应该做一件事，只做一件事，做好一件事。
+方法：尽可能小，不断抽象，分离结构，抽象层级足够少，最好一个。
+面向对象设计五个基本原则（SOLID）之一。这些原则是：单一职责原则、开闭原则、接口隔离原则、里氏替换原则和依赖倒置原则。
+函数名通俗易懂，风格统一。
+参数越少越好。
+做什么事和检查状态应该分离，分离指令和询问。">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -131,58 +150,175 @@
   </div>
 </aside>
       
-      <section id="main">
-      <div class="archive-year-wrap">
-        <i class="fa fa-archive"></i>
-        <a href="/archives/2015" class="archive-year">2015</a>
+      <section id="main"><article id="post-after-read-clean-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      读《代码整洁之道》一些总结
+    </h1>
+  
+
+        
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+    <time datetime="2016-05-04T10:20:37.000Z" itemprop="datePublished">2016-05-04</time>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
+
+          
+<div class="article-category">
+	<i class="fa fa-flag"></i>
+	<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次访问
+</div>
+
+
+          
+<div class="article-author"><i class="fa fa-user"></i>
+  
+  <a href="jackyxiong.github.io" title="JackyXiong">JackyXiong</a>
+</div>
+  
+
+        </div>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div id="toc" class="toc-article">
+          <!-- <strong class="toc-title">contents</strong> -->
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#怎么写好函数？"><span class="toc-number">1.</span> <span class="toc-text">怎么写好函数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码风格"><span class="toc-number">2.</span> <span class="toc-text">代码风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据抽象和封装"><span class="toc-number">3.</span> <span class="toc-text">数据抽象和封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#错误处理"><span class="toc-number">4.</span> <span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单元测试"><span class="toc-number">5.</span> <span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类"><span class="toc-number">6.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不断迭代"><span class="toc-number">7.</span> <span class="toc-text">不断迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#味道与启发（怎么样的代码是好代码）"><span class="toc-number">8.</span> <span class="toc-text">味道与启发（怎么样的代码是好代码）</span></a></li></ol>
+        </div>
+      
+        <h4 id="怎么写好函数？">怎么写好函数？</h4><ul>
+<li>函数应该做一件事，只做一件事，做好一件事。</li>
+<li>方法：尽可能小，不断抽象，分离结构，抽象层级足够少，最好一个。</li>
+<li>面向对象设计五个基本原则（SOLID）之一。这些原则是：单一职责原则、开闭原则、<br>接口隔离原则、里氏替换原则和依赖倒置原则。</li>
+<li>函数名通俗易懂，风格统一。</li>
+<li>参数越少越好。</li>
+<li>做什么事和检查状态应该分离，分离指令和询问。</li>
+</ul>
+<a id="more"></a>
+<h4 id="代码风格">代码风格</h4><ul>
+<li>根据逻辑，距离分隔。</li>
+<li>相关函数位置最好在一起，调用者在被调用者上，增强可读性。</li>
+</ul>
+<h4 id="数据抽象和封装">数据抽象和封装</h4><ul>
+<li>找到最原始的特性，封装，对外隐藏具体实现。</li>
+</ul>
+<h4 id="错误处理">错误处理</h4><ul>
+<li>处理错误时使用异常，不使用返回码。</li>
+<li>打包第三方API，对第三方API也可以封装到适合自己使用。</li>
+</ul>
+<h4 id="单元测试">单元测试</h4><ul>
+<li>测试随代码演进，和生产代码一样重要。</li>
+<li>测试代码要清晰整洁，可读性好，便于直达目的。</li>
+<li>原则：FIRST，快速独立可重复自足验证。</li>
+</ul>
+<h4 id="类">类</h4><ul>
+<li>单一权责，类根据职责要足够小</li>
+<li>内聚，保持内聚能得到更多短小的类</li>
+</ul>
+<h4 id="不断迭代">不断迭代</h4><ul>
+<li>通过所有测试</li>
+<li>不可重复代码，保证表达力</li>
+<li>尽可能减少类，方法数量</li>
+</ul>
+<h4 id="味道与启发（怎么样的代码是好代码）">味道与启发（怎么样的代码是好代码）</h4><ul>
+<li>注释<ul>
+<li>不含有不恰当的信息</li>
+<li>没有废弃的注释</li>
+<li>注释不冗余</li>
+<li>要写注释就好好写</li>
+<li>没有注释掉的代码</li>
+</ul>
+</li>
+<li>环境<ul>
+<li>一步构建开发，生产环境</li>
+<li>一步运行所有测试</li>
+</ul>
+</li>
+<li>函数<ul>
+<li>参数尽量少</li>
+<li>没有死函数</li>
+</ul>
+</li>
+<li>一般问题<ul>
+<li>没有重复（代码、功能、模块）</li>
+<li>低层级概念在派生类，高层级概念在基类，派生类对基类不可见</li>
+<li>消除死代码</li>
+<li>命名前后一致</li>
+<li>逻辑依赖改为物理依赖（依赖者模块不应该对被依赖模块有假定）</li>
+<li>用命名常量代替魔术数（不能描述自己的符号）</li>
+<li>只做一件事的函数</li>
+<li>使用时序耦合，使用必要的函数参数暴露时序性。</li>
+<li>封装边界条件（next_page = page+1）</li>
+<li>避免传递浏览（避免 a.get_b().get_c()）</li>
+</ul>
+</li>
+</ul>
+<p>NOTE: 整体来说，看完这本书还是发现有很多和自己编程时遇到的问题相通的地方。原则很多，只能一步步逼近理想的情况。追求整洁完美的代码是一件需要持之以恒的事情。</p>
+
+        
+
+        
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="article-footer print-invisible">
+      <a data-url="jackyxiong.github.io/2016/05/04/after-read-clean-code/" data-id="cinspj07r0000rm9ko3gbtu2q" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感悟/">感悟</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="print-invisible">
+  
+    <a href="/2016/05/04/django-middleware/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Django middleware 使用
+        
       </div>
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    
-    <header class="archive-article-header">
-      
+    </a>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/use-meteor-develop/">Use Accounts In Meteor development</a>
-    </h1>
+  
+    <a href="/2016/03/23/meteor-config-practice/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">meteor 开发配置实践</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+<div class="print-invisible">
   
 
-      
-        <div class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-    <time datetime="2015-10-29T14:01:23.000Z" itemprop="datePublished">10月 29</time>
 </div>
-      
-    </header>
-  </div>
-</article>
-  
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    
-    <header class="archive-article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/meteor-blaze/">关于 Meteor reactive 库 Blaze</a>
-    </h1>
-  
 
-      
-        <div class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-    <time datetime="2015-10-29T13:59:40.000Z" itemprop="datePublished">10月 29</time>
-</div>
-      
-    </header>
-  </div>
-</article>
-  
-    </div></section>
-  </section>
+</section>
       
         <aside id="sidebar" class="print-invisible">
   

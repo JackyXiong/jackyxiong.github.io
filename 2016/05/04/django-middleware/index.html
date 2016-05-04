@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/10 | Jacky Notes</title>
+  <title>Django middleware 使用 | Jacky Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacky Notes">
-<meta property="og:url" content="jackyxiong.github.io/archives/2015/10/index.html">
+  <meta name="description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django middleware 使用">
+<meta property="og:url" content="jackyxiong.github.io/2016/05/04/django-middleware/index.html">
 <meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description">
+<meta property="og:description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
+<meta property="og:updated_time" content="2016-05-04T10:20:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacky Notes">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Django middleware 使用">
+<meta name="twitter:description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -131,58 +135,116 @@
   </div>
 </aside>
       
-      <section id="main">
-      <div class="archive-year-wrap">
-        <i class="fa fa-archive"></i>
-        <a href="/archives/2015" class="archive-year">2015</a>
-      </div>
-      <section class="archives-wrap">
-        <div class="archives">
+      <section id="main"><article id="post-django-middleware" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
     
-    <header class="archive-article-header">
-      
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/use-meteor-develop/">Use Accounts In Meteor development</a>
+    <h1 class="article-title" itemprop="name">
+      Django middleware 使用
     </h1>
   
 
-      
-        <div class="archive-article-date">
+        
+        <div class="article-meta">
+          <div class="article-date">
   <i class="fa fa-calendar"></i>
-    <time datetime="2015-10-29T14:01:23.000Z" itemprop="datePublished">10月 29</time>
+    <time datetime="2016-05-04T10:20:47.000Z" itemprop="datePublished">2016-05-04</time>
 </div>
-      
-    </header>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Python-Django/">Python Django</a>
   </div>
-</article>
+
+          
+<div class="article-category">
+	<i class="fa fa-flag"></i>
+	<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次访问
+</div>
+
+
+          
+<div class="article-author"><i class="fa fa-user"></i>
   
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    
-    <header class="archive-article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/29/meteor-blaze/">关于 Meteor reactive 库 Blaze</a>
-    </h1>
+  <a href="jackyxiong.github.io" title="JackyXiong">JackyXiong</a>
+</div>
   
 
+        </div>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-        <div class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-    <time datetime="2015-10-29T13:59:40.000Z" itemprop="datePublished">10月 29</time>
-</div>
       
-    </header>
+        <div id="toc" class="toc-article">
+          <!-- <strong class="toc-title">contents</strong> -->
+          
+        </div>
+      
+        <p>Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  </p>
+<p>中间件有几个值得注意的地方：</p>
+<a id="more"></a>
+<ul>
+<li><p>中间类型分为5种，process_request（请求中间件） 、process_view （视图中间件）、process_template_response （模板中间件）、process_response （响应中间件） 、process_exception （异常中间件）</p>
+</li>
+<li><p>中间类型的执行顺序在 django.core.handler.base.py 文件里面可以看到，BaseHandler 类的 get_response 方法。</p>
+<p>当一个请求过来，首先调用 process_exception 中间件处理请求，然后根据 URL 进行匹配，在处理 process_exception 中间件。</p>
+<p>响应产生之后，执行顺序是 process_exception、process_response 、process_template_response</p>
+</li>
+</ul>
+<ul>
+<li><p>process_template_response(request, response)方法，request 就是 HttpRequest object，而 response 是 TemplateResponse object，或者是 SimpleTemplateResponse 的子类，因为SimpleTemplateResponse 实现了 render 方法。这种类型的中间件必须要响应对象实现 render 方法。</p>
+</li>
+<li><p>多个中间件的执行顺序：请求传入的时候按照 settings 文件中配置的 MIDDLEWARE_CLASSES 元组的顺序，响应传出的时候是按照 MIDDLEWARE_CLASSES 的逆序</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if hasattr(mw_instance, &#39;process_request&#39;):&#10;&#9;request_middleware.append(mw_instance.process_request)&#10;if hasattr(mw_instance, &#39;process_view&#39;):&#10;    self._view_middleware.append(mw_instance.process_view)&#10;if hasattr(mw_instance, &#39;process_template_response&#39;):&#10;    self._template_response_middleware.insert(0, mw_instance.process_template_response)&#10;if hasattr(mw_instance, &#39;process_response&#39;):&#10;    self._response_middleware.insert(0, mw_instance.process_response)&#10;if hasattr(mw_instance, &#39;process_exception&#39;):&#10;    self._exception_middleware.insert(0, mw_instance.process_exception)</span><br></pre></td></tr></table></figure>
+
+        
+
+        
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="article-footer print-invisible">
+      <a data-url="jackyxiong.github.io/2016/05/04/django-middleware/" data-id="cinspj091000frm9k2vluurtz" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+    </footer>
   </div>
-</article>
   
-    </div></section>
-  </section>
+    
+<nav id="article-nav" class="print-invisible">
+  
+  
+    <a href="/2016/05/04/after-read-clean-code/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">读《代码整洁之道》一些总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+<div class="print-invisible">
+  
+
+</div>
+
+</section>
       
         <aside id="sidebar" class="print-invisible">
   
