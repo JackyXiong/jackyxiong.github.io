@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: code | Jacky Notes</title>
+  <title>Django Message module introduce | Jacky Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacky Notes">
-<meta property="og:url" content="jackyxiong.github.io/categories/code/index.html">
+  <meta name="description" content="Django Message 是什么?
+Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
+主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Message module introduce">
+<meta property="og:url" content="jackyxiong.github.io/2016/07/20/Dajngo-message-module/index.html">
 <meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description">
+<meta property="og:description" content="Django Message 是什么?
+Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
+主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta property="og:updated_time" content="2016-07-20T05:09:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacky Notes">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Django Message module introduce">
+<meta name="twitter:description" content="Django Message 是什么?
+Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
+主要用于显示一个使用后即销毁的通知消息给用户。">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -131,37 +138,165 @@
   </div>
 </aside>
       
-      <section id="main">
-    <section class="archives-wrap">
-    <div class="archive-category-wrap">
-      <i class="fa fa-folder"></i>
-      <span class="archive-category">code</span>
-    </div>
-    <div class="archives">
+      <section id="main"><article id="post-Dajngo-message-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
     
-    <header class="archive-article-header">
-      
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/04/after-read-clean-code/">读《代码整洁之道》一些总结</a>
+    <h1 class="article-title" itemprop="name">
+      Django Message module introduce
     </h1>
   
 
-      
-        <div class="archive-article-date">
+        
+        <div class="article-meta">
+          <div class="article-date">
   <i class="fa fa-calendar"></i>
-    <time datetime="2016-05-04T10:20:37.000Z" itemprop="datePublished">2016 5月 4</time>
+    <time datetime="2016-07-20T05:09:57.000Z" itemprop="datePublished">2016-07-20</time>
 </div>
-      
-    </header>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Python-Django/">Python Django</a>
   </div>
-</article>
+
+          
+<div class="article-category">
+	<i class="fa fa-flag"></i>
+	<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次访问
+</div>
+
+
+          
+<div class="article-author"><i class="fa fa-user"></i>
+  
+  <a href="jackyxiong.github.io" title="JackyXiong">JackyXiong</a>
+</div>
+  
+
+        </div>
+        
+      </header>
     
-    </div></section>
-    </section>
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div id="toc" class="toc-article">
+          <!-- <strong class="toc-title">contents</strong> -->
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Django_Message_是什么?"><span class="toc-number">1.</span> <span class="toc-text">Django Message 是什么?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#由哪些组成？"><span class="toc-number">3.</span> <span class="toc-text">由哪些组成？</span></a></li></ol>
+        </div>
+      
+        <h1 id="Django_Message_是什么?">Django Message 是什么?</h1><ul>
+<li>Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。</li>
+<li>主要用于显示一个使用后即销毁的通知消息给用户。</li>
+</ul>
+<a id="more"></a>
+<h1 id="使用">使用</h1><ul>
+<li>settings<ul>
+<li>installed_app</li>
+<li>middleware</li>
+<li>tempalte</li>
+</ul>
+</li>
+</ul>
+<h1 id="由哪些组成？">由哪些组成？</h1><ul>
+<li><p>api</p>
+<ul>
+<li>一些直接使用的函数：add_message/get_message<br><code>add_message(request, messages.INFO, &#39;Hello world.&#39;)</code></li>
+<li>包装 add_message 的函数，debug，info，success，waring，error。类似于日志级别<br><code>info(request, &#39;Hello world.&#39;)</code></li>
+<li>set_level / get_level 设置消息的级别<br><code>set_level(request, messages.DEBUG)</code><br><code>get_level(request)</code></li>
+</ul>
+</li>
+<li><p>constant</p>
+<ul>
+<li>debug，info，success，waring，error</li>
+</ul>
+</li>
+<li><p>中间件</p>
+<ul>
+<li>请求处理：reqeust 对象添加_messages 属性（storage对象）</li>
+<li>响应处理：存储消息（写cookie，写session等）</li>
+</ul>
+</li>
+<li><p>context_processor 上下文处理器</p>
+<ul>
+<li>message 函数，Django后端渲染模板时，调用该函数得到相关的消息，模板内可使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if messages %&#125;&#10;&#60;ul class=&#34;messages&#34;&#62;&#10;    &#123;% for message in messages %&#125;&#10;    &#60;li&#123;% if message.tags %&#125; class=&#34;&#123;&#123; message.tags &#125;&#125;&#34;&#123;% endif %&#125;&#62;&#123;&#123; message &#125;&#125;&#60;/li&#62;&#10;    &#123;% endfor %&#125;&#10;&#60;/ul&#62;&#10;&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>view</p>
+<ul>
+<li>FormView 的 mixin 类</li>
+</ul>
+</li>
+<li><p>Storage</p>
+<ul>
+<li>Message class：消息实体，提供消息相关的函数</li>
+<li><p>BaseStorage</p>
+<ul>
+<li>add：往消息队列写入level低于默认level的消息，</li>
+<li>update：调用_store方法，将消息存储到对应的backend</li>
+<li>_store</li>
+<li>_get：模板渲染时被调用，获取消息实体</li>
+</ul>
+</li>
+<li><p>CookieStorage:继承，实现_store/ _get，</p>
+</li>
+<li>SessionStorage:继承，实现 _store/_get</li>
+<li>FallbackStorage：Django setting 默认，同时使用cookie和session的存储。</li>
+</ul>
+</li>
+<li><p>设计</p>
+<ul>
+<li>接口简单</li>
+<li>扩展容易</li>
+</ul>
+</li>
+</ul>
+
+        
+
+        
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="article-footer print-invisible">
+      <a data-url="jackyxiong.github.io/2016/07/20/Dajngo-message-module/" data-id="ciqufh1ph0000m09kfwnxe6j2" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="print-invisible">
+  
+  
+    <a href="/2016/05/04/django-middleware/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Django middleware 使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+<div class="print-invisible">
+  
+
+</div>
+
+</section>
       
         <aside id="sidebar" class="print-invisible">
   

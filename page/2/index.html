@@ -98,7 +98,7 @@
     
     <div class="article-info profile-block">
       <div class="article-info-block">
-        6
+        7
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -132,6 +132,84 @@
 </aside>
       
       <section id="main">
+      <article id="post-use-meteor-develop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/29/use-meteor-develop/">Use Accounts In Meteor development</a>
+    </h1>
+  
+
+        
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+    <time datetime="2015-10-29T14:01:23.000Z" itemprop="datePublished">2015-10-29</time>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Meteor/">Meteor</a>
+  </div>
+
+          
+
+          
+        </div>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Accounts-config_&amp;&amp;_Accounts-ui-config">Accounts.config &amp;&amp; Accounts.ui.config</h3><ul>
+<li>Accounts.config 是关于全局的账户系统配置。<br>主要配置项:<ul>
+<li>sendVerificationEmail：布尔值，对新用户发送验证邮件。</li>
+<li>forbidClientAccountCreation：布尔值。为真时，client 端调用的<code>Accounts.createUser</code>方法将被拒绝。如果使用的 accounts-ui 这个包，在 view 上的新建用户按钮也会不显示。</li>
+<li>restrictCreationByEmailDomain：字符串或函数。严格校验用户创建时的邮箱格式，<ul>
+<li>如果是字符串<code>Accounts.config({ restrictCreationByEmailDomain: &#39;school.edu&#39; })</code>，只有邮箱 domain 满足<code>school.edu</code>的才能创建成功。</li>
+<li>如果是函数，则将邮箱作为参数传入，返回 true 时才能创建成功。</li>
+</ul>
+</li>
+<li>loginExpirationInDays：数值对象。登录有效期，默认90天，为 null 时登录用不失效。</li>
+<li>oauthSecretKey：使用 oauth-encryption 设置的 key。详细参考：<a href="https://github.com/meteor/meteor/tree/dc3cd6eb92f2bdd1bb44000cdd6abd1e5d0285b1/packages/oauth-encryption">https://github.com/meteor/meteor/tree/dc3cd6eb92f2bdd1bb44000cdd6abd1e5d0285b1/packages/oauth-encryption</a></li>
+</ul>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/29/use-meteor-develop/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="article-footer print-invisible">
+      <a data-url="jackyxiong.github.io/2015/10/29/use-meteor-develop/" data-id="ciqufh1qf0001m09k8mrkjq0p" class="article-share-link">分享到</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+<div class="print-invisible">
+  
+
+</div>
+
+
+    
       <article id="post-meteor-blaze" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,7 +260,7 @@
     
 
     <footer class="article-footer print-invisible">
-      <a data-url="jackyxiong.github.io/2015/10/29/meteor-blaze/" data-id="cinspj08x000crm9ko1n80kop" class="article-share-link">分享到</a>
+      <a data-url="jackyxiong.github.io/2015/10/29/meteor-blaze/" data-id="ciqufh1r2000cm09k9g9qm2dt" class="article-share-link">分享到</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -210,6 +288,16 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              
+              <p class="item-title"><a href="/2016/07/20/Dajngo-message-module/" class="title">Django Message module introduce</a></p>
+              <p class="item-category"><a class="article-category-link" href="/categories/Python-Django/">Python Django</a></p>
+              <p class="item-date"><time datetime="2016-07-20T05:09:57.000Z" itemprop="datePublished">2016-07-20</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -251,16 +339,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2015/10/29/use-meteor-develop/" class="title">Use Accounts In Meteor development</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/Meteor/">Meteor</a></p>
-              <p class="item-date"><time datetime="2015-10-29T14:01:23.000Z" itemprop="datePublished">2015-10-29</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -270,7 +348,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Meteor/">Meteor</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Django/">Python Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Meteor/">Meteor</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Django/">Python Django</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -279,7 +357,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -288,7 +366,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a>
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a>
     </div>
   </div>
 
@@ -297,7 +375,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
