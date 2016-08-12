@@ -1,11 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<!doctype html>
+
+
+
   
-  <title>关于 Meteor reactive 库 Blaze | Jacky Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文是https://www.meteor.com/blaze 的翻译，主要介绍了 Blaze 的优点，和一篇介绍其原理的译文。
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文是https://www.meteor.com/blaze 的翻译，主要介绍了 Blaze 的优点，和一篇介绍其原理的译文。
 Meteor Blaze(译文)Meteor Blaze 是一个创建实时更新的用户界面的强劲的库。Blaze 和Angular, Backbone, Ember, React, Polymer, Knockout 这些前端库的目的相同，但是更加好用。由于其他用于创建用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 Meteor reactive 库 Blaze">
@@ -18,173 +97,201 @@ Meteor Blaze(译文)Meteor Blaze 是一个创建实时更新的用户界面的�
 <meta name="twitter:title" content="关于 Meteor reactive 库 Blaze">
 <meta name="twitter:description" content="本文是https://www.meteor.com/blaze 的翻译，主要介绍了 Blaze 的优点，和一篇介绍其原理的译文。
 Meteor Blaze(译文)Meteor Blaze 是一个创建实时更新的用户界面的强劲的库。Blaze 和Angular, Backbone, Ember, React, Polymer, Knockout 这些前端库的目的相同，但是更加好用。由于其他用于创建用户">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-  
-  
-  
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
 
-  
 
-  
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 关于 Meteor reactive 库 Blaze | Jacky Notes </title>
 </head>
-<body>
-  <div id="container">
-    <header id="header" class="print-invisible">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><span class="site-title">Jacky Notes</span></a>
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jacky Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
       
-      <nav id="sub-nav">
-        <div class="profile" id="profile-nav">
-          <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于 Meteor reactive 库 Blaze
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-10-29T21:59:40+08:00" content="2015-10-29">
+              2015-10-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Meteor/" itemprop="url" rel="index">
+                    <span itemprop="name">Meteor</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-      </nav>
-      
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="jackyxiong.github.io"></form>
-      </div>
-    </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-      
-        <td><a class="main-nav-link" href="/">Home</a></td>
-      
-        <td><a class="main-nav-link" href="/archives">Archives</a></td>
-      
-        <td><a class="main-nav-link" href="/categories">Categories</a></td>
-      
-        <td><a class="main-nav-link" href="/tags">Tags</a></td>
-      
-        <td><a class="main-nav-link" href="/about">About</a></td>
-      
-      <td>
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="jackyxiong.github.io"></form>
-      </td>
-      </tr>
-    </table>
-  </div>
-</header>
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-  	<div class="base-info profile-block">
-      <img id="avatar" src="/css/images/avatar.png">
-      <h2 id="name">JackyXiong</h2>
-      <h3 id="title">Web Developer &amp;&amp; Programmer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
-      <a id="follow" href="https://github.com/JackyXiong" target="_blank">关注我</a>
-    </div>
-    
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        7
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        3
-        <span>标签</span>
-      </div>
-    </div>
-    
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-        
-        
-        
-        <td><a href="http://github.com/jackyxiong" target="_blank" title="github"><i   class="fa fa-github"></i></a></td>
-        
-        
-        
-        <td><a href="https://twitter.com/Jacky0913Jacky" target="_blank" title="twitter"><i   class="fa fa-twitter"></i></a></td>
-        
-        
-        
-        <td><a href="http://weibo.com/0913jacky" target="_blank" title="weibo"><i   class="fa fa-weibo"></i></a></td>
-        
-        </tr>
-      </table>
-    </div>
-    
-  </div>
-</aside>
-      
-      <section id="main"><article id="post-meteor-blaze" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      关于 Meteor reactive 库 Blaze
-    </h1>
-  
-
-        
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-    <time datetime="2015-10-29T13:59:40.000Z" itemprop="datePublished">2015-10-29</time>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Meteor/">Meteor</a>
-  </div>
-
-          
-<div class="article-category">
-	<i class="fa fa-flag"></i>
-	<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次访问
-</div>
-
-
-          
-<div class="article-author"><i class="fa fa-user"></i>
-  
-  <a href="jackyxiong.github.io" title="JackyXiong">JackyXiong</a>
-</div>
-  
-
-        </div>
-        
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
-        <div id="toc" class="toc-article">
-          <!-- <strong class="toc-title">contents</strong> -->
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Meteor_Blaze(译文)"><span class="toc-number">1.</span> <span class="toc-text">Meteor Blaze(译文)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How_Blaze_Works_-_Meteor’s_Reactive_Templating_UI"><span class="toc-number">2.</span> <span class="toc-text">How Blaze Works - Meteor’s Reactive Templating UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#html_解析"><span class="toc-number">2.1.</span> <span class="toc-text">html 解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端的_Blaze"><span class="toc-number">2.2.</span> <span class="toc-text">客户端的 Blaze</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Spacebars"><span class="toc-number">2.2.1.</span> <span class="toc-text">Spacebars</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Blaze-View"><span class="toc-number">2.2.2.</span> <span class="toc-text">Blaze.View</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HtmlJS"><span class="toc-number">2.2.3.</span> <span class="toc-text">HtmlJS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DOM_Range"><span class="toc-number">2.2.4.</span> <span class="toc-text">DOM Range</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Template-body"><span class="toc-number">2.2.5.</span> <span class="toc-text">Template.body</span></a></li></ol></li></ol></li></ol>
-        </div>
+
       
         <p> 本文是<a href="https://www.meteor.com/blaze" target="_blank" rel="external">https://www.meteor.com/blaze</a> 的翻译，主要介绍了 Blaze 的优点，和一篇介绍其原理的译文。</p>
 <h3 id="Meteor_Blaze(译文)">Meteor Blaze(译文)</h3><p>Meteor Blaze 是一个创建实时更新的用户界面的强劲的库。<br>Blaze 和Angular, Backbone, Ember, React, Polymer, Knockout 这些前端库的目的相同，但是更加好用。<br>由于其他用于创建用户界面的库在编程时有不必要的麻烦和困惑，我们才构建了它。</p>
@@ -223,179 +330,282 @@ Meteor Blaze(译文)Meteor Blaze 是一个创建实时更新的用户界面的�
 <h5 id="DOM_Range">DOM Range</h5><p>DOM Range 是动态追踪 dom 节点的改变。每个视图都有自己的DOM Range ，而且视图会动态的修改DOM Range 。我们可以在任何时候将 DOM Range 插入真实的 DOM 中。</p>
 <h5 id="Template-body">Template.body</h5><p>这是 app 中最重要的模板，所有的 body 部分都会被合并到这个上面。注意到我说的「所有的body 部分」了吗？因为在 Meteor 里面我们可以在多个 HTML 文件的模板里面有<code>body</code>标签。</p>
 
-        
+      
+    </div>
 
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
         
 
       
     </div>
-    
 
-    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
 
-    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
 
-    <footer class="article-footer print-invisible">
-      <a data-url="jackyxiong.github.io/2015/10/29/meteor-blaze/" data-id="ciqufh1r2000cm09k9g9qm2dt" class="article-share-link">分享到</a>
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/29/use-meteor-develop/" rel="prev" title="Use Accounts In Meteor development">
+                Use Accounts In Meteor development <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
     </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
-  
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-<nav id="article-nav" class="print-invisible">
-  
-    <a href="/2015/10/29/use-meteor-develop/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+  </div>
+
+
+        </div>
         
-          Use Accounts In Meteor development
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/css/images/avatar.png"
+               alt="JackyXiong" />
+          <p class="site-author-name" itemprop="name">JackyXiong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分類</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Meteor_Blaze(译文)"><span class="nav-number">1.</span> <span class="nav-text">Meteor Blaze(译文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How_Blaze_Works_-_Meteor’s_Reactive_Templating_UI"><span class="nav-number">2.</span> <span class="nav-text">How Blaze Works - Meteor’s Reactive Templating UI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html_解析"><span class="nav-number">2.1.</span> <span class="nav-text">html 解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端的_Blaze"><span class="nav-number">2.2.</span> <span class="nav-text">客户端的 Blaze</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spacebars"><span class="nav-number">2.2.1.</span> <span class="nav-text">Spacebars</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Blaze-View"><span class="nav-number">2.2.2.</span> <span class="nav-text">Blaze.View</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HtmlJS"><span class="nav-number">2.2.3.</span> <span class="nav-text">HtmlJS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM_Range"><span class="nav-number">2.2.4.</span> <span class="nav-text">DOM Range</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Template-body"><span class="nav-number">2.2.5.</span> <span class="nav-text">Template.body</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-</nav>
+    </main>
 
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-</article>
-<div class="print-invisible">
-  
-
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JackyXiong</span>
 </div>
 
-</section>
-      
-        <aside id="sidebar" class="print-invisible">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
         
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2016/07/20/Dajngo-message-module/" class="title">Django Message module introduce</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/Python-Django/">Python Django</a></p>
-              <p class="item-date"><time datetime="2016-07-20T05:09:57.000Z" itemprop="datePublished">2016-07-20</time></p>
-            </div>
-          </li>
+
         
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2016/05/04/django-middleware/" class="title">Django middleware 使用</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/Python-Django/">Python Django</a></p>
-              <p class="item-date"><time datetime="2016-05-04T10:20:47.000Z" itemprop="datePublished">2016-05-04</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2016/05/04/after-read-clean-code/" class="title">读《代码整洁之道》一些总结</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
-              <p class="item-date"><time datetime="2016-05-04T10:20:37.000Z" itemprop="datePublished">2016-05-04</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2016/03/23/meteor-config-practice/" class="title">meteor 开发配置实践</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/Meteor/">Meteor</a></p>
-              <p class="item-date"><time datetime="2016-03-23T10:14:00.000Z" itemprop="datePublished">2016-03-23</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              
-              <p class="item-title"><a href="/2015/12/28/meteor-tips/" class="title">Meteor 包管理机制</a></p>
-              <p class="item-category"><a class="article-category-link" href="/categories/Meteor/">Meteor</a></p>
-              <p class="item-date"><time datetime="2015-12-28T02:23:57.000Z" itemprop="datePublished">2015-12-28</time></p>
-            </div>
-          </li>
-        
-      </ul>
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Meteor/">Meteor</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Django/">Python Django</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
-    </div>
-    <footer id="footer" class="print-invisible">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 JackyXiong<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/JamesPan/hexo-theme-icarus">icarus</a>. 
-    </div>
-  </div>
-</footer>
-    
-
-
-<script async="async" src="//dn-lbstatics.qbox.me/lbservice/busuanzi/2.0/busuanzi.mini.js"></script>
 
 <script type="text/javascript">
-$("span.heimu").attr("title", "你知道的太多了")
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
 
-  </div>
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
 </body>
 </html>
