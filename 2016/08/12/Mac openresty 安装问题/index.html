@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mac,openresty," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description">
+<meta name="description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jacky Notes">
-<meta property="og:url" content="jackyxiong.github.io/2016/08/12/example/index.html">
+<meta property="og:title" content="Mac 安装openresty 问题记录">
+<meta property="og:url" content="jackyxiong.github.io/2016/08/12/Mac openresty 安装问题/index.html">
 <meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-08-12T03:11:25.000Z">
+<meta property="og:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta property="og:updated_time" content="2016-08-12T04:16:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacky Notes">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Mac 安装openresty 问题记录">
+<meta name="twitter:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title>  | Jacky Notes </title>
+  <title> Mac 安装openresty 问题记录 | Jacky Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -231,7 +231,7 @@
             
             
               
-                
+                Mac 安装openresty 问题记录
               
             
           </h1>
@@ -243,11 +243,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T11:11:25+08:00" content="2016-08-12">
+            <time itemprop="dateCreated" datetime="2016-08-12T12:16:58+08:00" content="2016-08-12">
               2016-08-12
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -271,7 +290,20 @@
       
 
       
-        
+        <p>最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。<br>过程中遇到不少问题，记录下来。<br>Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。</p>
+<a id="more"></a>
+<p>编译需要的相关依赖</p>
+<blockquote>
+<p>openssl: 1.0.2h_1，如果没有安装，需要先<code>brew install openssl</code><br>pcre: 8.37，同上需要安装</p>
+</blockquote>
+<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/opt/openresty \&#10;--with-cc-opt=&#34;-I/usr/local/Cellar/pcre/8.37/include/&#34; \&#10;--with-luajit --without-http_redis2_module --with-ld-opt=&#34;-L/usr/local/lib&#34; \&#10;--with-openssl=/Users/xiongjie/Downloads/openssl-1.0.2h --with-pcre</span><br></pre></td></tr></table></figure></p>
+<p>编译完成之后make，make install.</p>
+<p>问题主要是出在编译 Nginx 的时候，如果make出现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: symbol(s) not found for architecture x86_64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&#10;make[1]: *** [objs/nginx] Error 1&#10;make: *** [build] Error 2</span><br></pre></td></tr></table></figure></p>
+<p>注意configure命令，–with-pcre 后面不需要参数，官方文档</p>
+<blockquote>
+<p>–with-pcre=*path<br>  sets the path to the sources of the PCRE library. The library distribution (version 4.4 — 8.21)<br>  needs to be downloaded from the PCRE site and extracted. The rest is done by NGINX’s ./configure and make.<br>  The library is required for regular expressions support in the location directive and for<br>  the ngx_http_rewrite_module. See notes below for using system PCRE on FreeBSD systems.<br>可能是版本问题导致，我安装的版本比官方文档建议的高，编译的时候设置路径就编译的文件就不能正常安装。</p>
+</blockquote>
+
       
     </div>
 
@@ -289,6 +321,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag">#Mac</a>
+          
+            <a href="/tags/openresty/" rel="tag">#openresty</a>
+          
+        </div>
       
 
       
@@ -386,7 +426,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
