@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,openresty," />
+  <meta name="keywords" content="技术," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta name="description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac 安装openresty 问题记录">
-<meta property="og:url" content="jackyxiong.github.io/2016/08/12/Mac openresty 安装问题/index.html">
-<meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
-<meta property="og:updated_time" content="2016-08-12T04:16:58.000Z">
+<meta property="og:title" content="Django middleware 使用">
+<meta property="og:url" content="jackyxiong.github.io/2016/05/04/20160504-django-middleware/index.html">
+<meta property="og:site_name" content="JackySay">
+<meta property="og:description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
+<meta property="og:updated_time" content="2016-05-04T10:20:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac 安装openresty 问题记录">
-<meta name="twitter:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta name="twitter:title" content="Django middleware 使用">
+<meta name="twitter:description" content="Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  
+中间件有几个值得注意的地方：">
 
 
 
@@ -111,7 +114,7 @@
   };
 </script>
 
-  <title> Mac 安装openresty 问题记录 | Jacky Notes </title>
+  <title> Django middleware 使用 | JackySay </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -142,7 +145,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jacky Notes</span>
+      <span class="site-title">JackySay</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -231,7 +234,7 @@
             
             
               
-                Mac 安装openresty 问题记录
+                Django middleware 使用
               
             
           </h1>
@@ -243,8 +246,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T12:16:58+08:00" content="2016-08-12">
-              2016-08-12
+            <time itemprop="dateCreated" datetime="2016-05-04T18:20:47+08:00" content="2016-05-04">
+              2016-05-04
             </time>
           </span>
 
@@ -257,8 +260,8 @@
               <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">code</span>
+                  <a href="/categories/Python-Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Python Django</span>
                   </a>
                 </span>
 
@@ -290,19 +293,24 @@
       
 
       
-        <p>最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。<br>过程中遇到不少问题，记录下来。<br>Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。</p>
+        <p>Django 中间件是 Django 框架里面很重要的一个东西。session 管理、防止 csrf 攻击都是靠中间件完成。  </p>
+<p>中间件有几个值得注意的地方：</p>
 <a id="more"></a>
-<p>编译需要的相关依赖</p>
-<blockquote>
-<p>openssl: 1.0.2h_1，如果没有安装，需要先<code>brew install openssl</code><br>pcre: 8.37，同上需要安装</p>
-</blockquote>
-<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/opt/openresty \&#10;--with-cc-opt=&#34;-I/usr/local/Cellar/pcre/8.37/include/&#34; \&#10;--with-luajit --without-http_redis2_module --with-ld-opt=&#34;-L/usr/local/lib&#34; \&#10;--with-openssl=/Users/xiongjie/Downloads/openssl-1.0.2h --with-pcre</span><br></pre></td></tr></table></figure></p>
-<p>编译完成之后make，make install.</p>
-<p>问题主要是出在编译 Nginx 的时候，如果make出现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: symbol(s) not found for architecture x86_64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&#10;make[1]: *** [objs/nginx] Error 1&#10;make: *** [build] Error 2</span><br></pre></td></tr></table></figure></p>
-<p>注意configure命令，–with-pcre 后面不需要参数，官方文档</p>
-<blockquote>
-<p>–with-pcre=*path<br>  sets the path to the sources of the PCRE library. The library distribution (version 4.4 — 8.21)<br>  needs to be downloaded from the PCRE site and extracted. The rest is done by NGINX’s ./configure and make.<br>  The library is required for regular expressions support in the location directive and for<br>  the ngx_http_rewrite_module. See notes below for using system PCRE on FreeBSD systems.<br>可能是版本问题导致，我安装的版本比官方文档建议的高，编译的时候设置路径就编译的文件就不能正常安装。</p>
-</blockquote>
+<ul>
+<li><p>中间类型分为5种，process_request（请求中间件） 、process_view （视图中间件）、process_template_response （模板中间件）、process_response （响应中间件） 、process_exception （异常中间件）</p>
+</li>
+<li><p>中间类型的执行顺序在 django.core.handler.base.py 文件里面可以看到，BaseHandler 类的 get_response 方法。</p>
+<p>当一个请求过来，首先调用 process_exception 中间件处理请求，然后根据 URL 进行匹配，在处理 process_exception 中间件。</p>
+<p>响应产生之后，执行顺序是 process_exception、process_response 、process_template_response</p>
+</li>
+</ul>
+<ul>
+<li><p>process_template_response(request, response)方法，request 就是 HttpRequest object，而 response 是 TemplateResponse object，或者是 SimpleTemplateResponse 的子类，因为SimpleTemplateResponse 实现了 render 方法。这种类型的中间件必须要响应对象实现 render 方法。</p>
+</li>
+<li><p>多个中间件的执行顺序：请求传入的时候按照 settings 文件中配置的 MIDDLEWARE_CLASSES 元组的顺序，响应传出的时候是按照 MIDDLEWARE_CLASSES 的逆序</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if hasattr(mw_instance, &#39;process_request&#39;):&#10;&#9;request_middleware.append(mw_instance.process_request)&#10;if hasattr(mw_instance, &#39;process_view&#39;):&#10;    self._view_middleware.append(mw_instance.process_view)&#10;if hasattr(mw_instance, &#39;process_template_response&#39;):&#10;    self._template_response_middleware.insert(0, mw_instance.process_template_response)&#10;if hasattr(mw_instance, &#39;process_response&#39;):&#10;    self._response_middleware.insert(0, mw_instance.process_response)&#10;if hasattr(mw_instance, &#39;process_exception&#39;):&#10;    self._exception_middleware.insert(0, mw_instance.process_exception)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -324,9 +332,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
-          
-            <a href="/tags/openresty/" rel="tag">#openresty</a>
+            <a href="/tags/技术/" rel="tag">#技术</a>
           
         </div>
       
@@ -335,13 +341,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/12/after-read-clean-code/" rel="next" title="读《代码整洁之道》一些总结">
-                <i class="fa fa-chevron-left"></i> 读《代码整洁之道》一些总结
+              <a href="/2016/03/23/20160323-meteor-config-practice/" rel="next" title="meteor 开发配置实践">
+                <i class="fa fa-chevron-left"></i> meteor 开发配置实践
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/20160720-Django-message-module/" rel="prev" title="Django Message module introduce">
+                Django Message module introduce <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,7 +419,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -426,7 +436,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

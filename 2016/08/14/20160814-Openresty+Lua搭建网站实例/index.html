@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术," />
+  <meta name="keywords" content="lua,openresty," />
 
 
 
@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta name="description" content="最近在折腾 OpenResty，OpenResty 就不用多介绍了，这方面国内质量好的资料也不多，如果非要选一个入门级别的资料，自然是《OpenResty 最佳实践》。断断续续看了一些 Lua 的语法和 OpenResty 基础，就想做点什么练练手。碰巧某天。同事介绍了几个 OpenResty 的 lua 库，一看刚刚好，可以做来搭个简单的网站。那么我们就开始吧…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django Message module introduce">
-<meta property="og:url" content="jackyxiong.github.io/2016/07/20/Django-message-module/index.html">
-<meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
-<meta property="og:updated_time" content="2016-07-20T05:09:57.000Z">
+<meta property="og:title" content="如何用 openresty + lua 快速搭建一个简单网站">
+<meta property="og:url" content="jackyxiong.github.io/2016/08/14/20160814-Openresty+Lua搭建网站实例/index.html">
+<meta property="og:site_name" content="JackySay">
+<meta property="og:description" content="最近在折腾 OpenResty，OpenResty 就不用多介绍了，这方面国内质量好的资料也不多，如果非要选一个入门级别的资料，自然是《OpenResty 最佳实践》。断断续续看了一些 Lua 的语法和 OpenResty 基础，就想做点什么练练手。碰巧某天。同事介绍了几个 OpenResty 的 lua 库，一看刚刚好，可以做来搭个简单的网站。那么我们就开始吧…">
+<meta property="og:updated_time" content="2016-08-14T02:52:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django Message module introduce">
-<meta name="twitter:description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta name="twitter:title" content="如何用 openresty + lua 快速搭建一个简单网站">
+<meta name="twitter:description" content="最近在折腾 OpenResty，OpenResty 就不用多介绍了，这方面国内质量好的资料也不多，如果非要选一个入门级别的资料，自然是《OpenResty 最佳实践》。断断续续看了一些 Lua 的语法和 OpenResty 基础，就想做点什么练练手。碰巧某天。同事介绍了几个 OpenResty 的 lua 库，一看刚刚好，可以做来搭个简单的网站。那么我们就开始吧…">
 
 
 
@@ -117,7 +111,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
   };
 </script>
 
-  <title> Django Message module introduce | Jacky Notes </title>
+  <title> 如何用 openresty + lua 快速搭建一个简单网站 | JackySay </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -148,7 +142,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jacky Notes</span>
+      <span class="site-title">JackySay</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -237,7 +231,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
             
             
               
-                Django Message module introduce
+                如何用 openresty + lua 快速搭建一个简单网站
               
             
           </h1>
@@ -249,8 +243,8 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T13:09:57+08:00" content="2016-07-20">
-              2016-07-20
+            <time itemprop="dateCreated" datetime="2016-08-14T10:52:03+08:00" content="2016-08-14">
+              2016-08-14
             </time>
           </span>
 
@@ -263,8 +257,8 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
               <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python-Django/" itemprop="url" rel="index">
-                    <span itemprop="name">Python Django</span>
+                  <a href="/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
                   </a>
                 </span>
 
@@ -296,73 +290,20 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
       
 
       
-        <h1 id="Django_Message_是什么?">Django Message 是什么?</h1><ul>
-<li>Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。</li>
-<li>主要用于显示一个使用后即销毁的通知消息给用户。</li>
-</ul>
+        <p>最近在折腾 OpenResty，OpenResty 就不用多介绍了，这方面国内质量好的资料也不多，<br>如果非要选一个入门级别的资料，自然是《OpenResty 最佳实践》。断断续续看了一些 Lua 的语法和 OpenResty 基础，<br>就想做点什么练练手。碰巧某天。同事介绍了几个 OpenResty 的 lua 库，一看刚刚好，可以做来搭个简单的网站。<br>那么我们就开始吧…</p>
 <a id="more"></a>
-<h1 id="使用">使用</h1><ul>
-<li>settings<ul>
-<li>installed_app</li>
-<li>middleware</li>
-<li>tempalte</li>
-</ul>
-</li>
-</ul>
-<h1 id="由哪些组成？">由哪些组成？</h1><ul>
-<li><p>api</p>
-<ul>
-<li>一些直接使用的函数：add_message/get_message<br><code>add_message(request, messages.INFO, &#39;Hello world.&#39;)</code></li>
-<li>包装 add_message 的函数，debug，info，success，waring，error。类似于日志级别<br><code>info(request, &#39;Hello world.&#39;)</code></li>
-<li>set_level / get_level 设置消息的级别<br><code>set_level(request, messages.DEBUG)</code><br><code>get_level(request)</code></li>
-</ul>
-</li>
-<li><p>constant</p>
-<ul>
-<li>debug，info，success，waring，error</li>
-</ul>
-</li>
-<li><p>中间件</p>
-<ul>
-<li>请求处理：reqeust 对象添加_messages 属性（storage对象）</li>
-<li>响应处理：存储消息（写cookie，写session等）</li>
-</ul>
-</li>
-<li><p>context_processor 上下文处理器</p>
-<ul>
-<li>message 函数，Django后端渲染模板时，调用该函数得到相关的消息，模板内可使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if messages %&#125;&#10;&#60;ul class=&#34;messages&#34;&#62;&#10;    &#123;% for message in messages %&#125;&#10;    &#60;li&#123;% if message.tags %&#125; class=&#34;&#123;&#123; message.tags &#125;&#125;&#34;&#123;% endif %&#125;&#62;&#123;&#123; message &#125;&#125;&#60;/li&#62;&#10;    &#123;% endfor %&#125;&#10;&#60;/ul&#62;&#10;&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>view</p>
-<ul>
-<li>FormView 的 mixin 类</li>
-</ul>
-</li>
-<li><p>Storage</p>
-<ul>
-<li>Message class：消息实体，提供消息相关的函数</li>
-<li><p>BaseStorage</p>
-<ul>
-<li>add：往消息队列写入level低于默认level的消息，</li>
-<li>update：调用_store方法，将消息存储到对应的backend</li>
-<li>_store</li>
-<li>_get：模板渲染时被调用，获取消息实体</li>
-</ul>
-</li>
-<li><p>CookieStorage:继承，实现_store/ _get，</p>
-</li>
-<li>SessionStorage:继承，实现 _store/_get</li>
-<li>FallbackStorage：Django setting 默认，同时使用cookie和session的存储。</li>
-</ul>
-</li>
-<li><p>设计</p>
-<ul>
-<li>接口简单</li>
-<li>扩展容易</li>
-</ul>
-</li>
-</ul>
+<h3 id="安装_OpenResty">安装 OpenResty</h3><p>在上一篇文章，记录了几个 Mac 安装 openresty 的几个坑。有兴趣的可以看看，不多介绍了。</p>
+<h3 id="搭建项目">搭建项目</h3><p>项目目录很简单，刚刚介绍的那个 lua 库 lua-resty-template，看库的名字就知道这是个模板相关的库，主要是提供模板渲染的功能。<br>有一些自己的模板语法，这和其他语法的模板语法一样的。</p>
+<p>项目目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; conf&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; nginx.conf&#10;&#9500;&#9472;&#9472; html&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; _base.html&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; view.html&#10;&#9500;&#9472;&#9472; lua_file&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; content.lua&#10;&#9500;&#9472;&#9472; readme.md&#10;&#9492;&#9472;&#9472; requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>基本机构有了，开始安装相关依赖，我自己的openresty是安装在/opt目录下，大致看下结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; bin&#10;&#9500;&#9472;&#9472; lualib&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; cjson.so&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; ngx&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; rds&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; redis&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; resty&#10;&#9500;&#9472;&#9472; luajit&#10;&#9500;&#9472;&#9472; nginx&#10;&#9492;&#9472;&#9472; pod&#10;&#9492;&#9472;&#9472; resty.index</span><br></pre></td></tr></table></figure></p>
+<p>lualib/resty 主要就是openresty内置的resty 模块，为了将第三方模块区分出来，最好新建一个目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/openresty/lualib/3rd_resty/resty</span><br></pre></td></tr></table></figure></p>
+<p>可能会奇怪为什么需要<code>3rd_resty/resty</code>这样的嵌套目录，因为 template.lua 文件的模块是<code>resty.template</code>，这样才能正确的被lua导入，<br>将需要的lua-resty-template/template.lua 文件放置于<code>/opt/openresty/lualib/3rd_resty/resty</code>，这一步就结束了。</p>
+<h3 id="Coding">Coding</h3><p>开始编码，其实首先需要修改原始的Nginx配置文件，在nginx.conf 添加以下2行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua_package_path &#39;/opt/openresty/lualib/3rd_resty/?.lua;;&#39;&#10;include /path/to/your/nginx.conf;</span><br></pre></td></tr></table></figure></p>
+<p>lua_package_path 是 lua_nginx_module 库的内置参数，设置了lua的包解析路径。</p>
+<p>项目的nginx.conf 是这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server &#123;&#10;    listen 6699;&#10;    set $tempalte_root /path/to/project/html;&#10;&#10;    location / &#123;&#10;        default_type text/html;&#10;        content_by_lua_file /path/to/lua_file/content.lua;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>set $tempalte_root /path/to/project/html;</code> 是设置html文件的解析路径，<br><code>content_by_lua_file</code> 也是 lua_nginx_module 库的内置参数，我们完成功能最关键的语句，会调用lua文件执行代码，获得返回结果，直接响应请求。</p>
+<p>其他lua代码和html代码就不贴上来了，有兴趣的去<a href="https://github.com/JackyXiong/openresty-lua-site" target="_blank" rel="external">github</a>看吧。</p>
+<h3 id="其他">其他</h3><p>不得不说，openresty通过lua扩展nginx的功能，使其更加的强大。使用它来搭建网站不能真正发挥其在服务端的作用，本文只是管中窥豹，后续还有更多值得深入的地方。</p>
 
       
     </div>
@@ -384,7 +325,9 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag">#技术</a>
+            <a href="/tags/lua/" rel="tag">#lua</a>
+          
+            <a href="/tags/openresty/" rel="tag">#openresty</a>
           
         </div>
       
@@ -393,17 +336,13 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/04/django-middleware/" rel="next" title="Django middleware 使用">
-                <i class="fa fa-chevron-left"></i> Django middleware 使用
+              <a href="/2016/08/12/20160812-Mac openresty 安装问题/" rel="next" title="Mac 安装openresty 问题记录">
+                <i class="fa fa-chevron-left"></i> Mac 安装openresty 问题记录
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/12/after-read-clean-code/" rel="prev" title="读《代码整洁之道》一些总结">
-                读《代码整洁之道》一些总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,7 +410,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -488,7 +427,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -517,7 +456,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django_Message_是什么?"><span class="nav-number">1.</span> <span class="nav-text">Django Message 是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#由哪些组成？"><span class="nav-number">3.</span> <span class="nav-text">由哪些组成？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装_OpenResty"><span class="nav-number">1.</span> <span class="nav-text">安装 OpenResty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建项目"><span class="nav-number">2.</span> <span class="nav-text">搭建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Coding"><span class="nav-number">3.</span> <span class="nav-text">Coding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
           </div>
         </section>

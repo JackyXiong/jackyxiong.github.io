@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Mac,openresty," />
 
 
 
@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="Accounts.config &amp;amp;&amp;amp; Accounts.ui.config
-Accounts.config 是关于全局的账户系统配置。主要配置项:
-sendVerificationEmail：布尔值，对新用户发送验证邮件。
-forbidClientAccountCreation：布尔值。为真时，client 端调用的Accounts.createUser方法将被拒绝。如果使用的 a">
+<meta name="description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Use Accounts In Meteor development">
-<meta property="og:url" content="jackyxiong.github.io/2015/10/29/use-meteor-develop/index.html">
-<meta property="og:site_name" content="Jacky Notes">
-<meta property="og:description" content="Accounts.config &amp;amp;&amp;amp; Accounts.ui.config
-Accounts.config 是关于全局的账户系统配置。主要配置项:
-sendVerificationEmail：布尔值，对新用户发送验证邮件。
-forbidClientAccountCreation：布尔值。为真时，client 端调用的Accounts.createUser方法将被拒绝。如果使用的 a">
-<meta property="og:updated_time" content="2015-10-29T14:01:23.000Z">
+<meta property="og:title" content="Mac 安装openresty 问题记录">
+<meta property="og:url" content="jackyxiong.github.io/2016/08/12/20160812-Mac openresty 安装问题/index.html">
+<meta property="og:site_name" content="JackySay">
+<meta property="og:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta property="og:updated_time" content="2016-08-12T04:16:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Use Accounts In Meteor development">
-<meta name="twitter:description" content="Accounts.config &amp;amp;&amp;amp; Accounts.ui.config
-Accounts.config 是关于全局的账户系统配置。主要配置项:
-sendVerificationEmail：布尔值，对新用户发送验证邮件。
-forbidClientAccountCreation：布尔值。为真时，client 端调用的Accounts.createUser方法将被拒绝。如果使用的 a">
+<meta name="twitter:title" content="Mac 安装openresty 问题记录">
+<meta name="twitter:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
 
 
 
@@ -120,7 +111,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
   };
 </script>
 
-  <title> Use Accounts In Meteor development | Jacky Notes </title>
+  <title> Mac 安装openresty 问题记录 | JackySay </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -151,7 +142,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jacky Notes</span>
+      <span class="site-title">JackySay</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -240,7 +231,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
             
             
               
-                Use Accounts In Meteor development
+                Mac 安装openresty 问题记录
               
             
           </h1>
@@ -252,8 +243,8 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-10-29T22:01:23+08:00" content="2015-10-29">
-              2015-10-29
+            <time itemprop="dateCreated" datetime="2016-08-12T12:16:58+08:00" content="2016-08-12">
+              2016-08-12
             </time>
           </span>
 
@@ -266,8 +257,8 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
               <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Meteor/" itemprop="url" rel="index">
-                    <span itemprop="name">Meteor</span>
+                  <a href="/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
                   </a>
                 </span>
 
@@ -299,42 +290,19 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
       
 
       
-        <h3 id="Accounts-config_&amp;&amp;_Accounts-ui-config">Accounts.config &amp;&amp; Accounts.ui.config</h3><ul>
-<li>Accounts.config 是关于全局的账户系统配置。<br>主要配置项:<ul>
-<li>sendVerificationEmail：布尔值，对新用户发送验证邮件。</li>
-<li>forbidClientAccountCreation：布尔值。为真时，client 端调用的<code>Accounts.createUser</code>方法将被拒绝。如果使用的 accounts-ui 这个包，在 view 上的新建用户按钮也会不显示。</li>
-<li>restrictCreationByEmailDomain：字符串或函数。严格校验用户创建时的邮箱格式，<ul>
-<li>如果是字符串<code>Accounts.config({ restrictCreationByEmailDomain: &#39;school.edu&#39; })</code>，只有邮箱 domain 满足<code>school.edu</code>的才能创建成功。</li>
-<li>如果是函数，则将邮箱作为参数传入，返回 true 时才能创建成功。</li>
-</ul>
-</li>
-<li>loginExpirationInDays：数值对象。登录有效期，默认90天，为 null 时登录用不失效。</li>
-<li>oauthSecretKey：使用 oauth-encryption 设置的 key。详细参考：<a href="https://github.com/meteor/meteor/tree/dc3cd6eb92f2bdd1bb44000cdd6abd1e5d0285b1/packages/oauth-encryption" target="_blank" rel="external">https://github.com/meteor/meteor/tree/dc3cd6eb92f2bdd1bb44000cdd6abd1e5d0285b1/packages/oauth-encryption</a></li>
-</ul>
-</li>
-</ul>
+        <p>最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。<br>过程中遇到不少问题，记录下来。<br>Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。</p>
 <a id="more"></a>
-<ul>
-<li>Accounts.ui.config 是accounts-ui 提供的<code>{{> loginButtons}}</code>的视图层面的配置。<br>主要配置项:<ul>
-<li>requestPermissions： </li>
-<li>requestOfflineToken：</li>
-<li>forceApprovalPrompt：</li>
-<li>passwordSignupFields：用户注册时，需要填写的数据字段。可选项<code>USERNAME_AND_EMAIL</code>, <code>USERNAME_AND_OPTIONAL_EMAIL</code>, <code>USERNAME_ONLY</code>,<code>EMAIL_ONLY</code>(default).</li>
-</ul>
-</li>
-</ul>
-<h3 id="publish_and_subscribe_Meteor-users">publish and subscribe Meteor.users</h3><p>未对Meteor.users 作数据发布处理，Server 会将当前登录用户的数据发布到 client 端。在 client 端使用 <code>Meteor.users().find().fetch()</code> 只能获取到当前登录用户的数据。<br>若 client 端需要其他的用户数据。需要在服务端进行发布。<br>In server: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(&#34;users&#34;, function() &#123;&#10;  return Meteor.users.find();&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>In client:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Meteor.subscribe(&#34;users&#34;);&#10;Meteor.users().find().fetch(); //&#33719;&#21462;&#25152;&#26377;&#29992;&#25143;&#30340;&#25968;&#25454;</span><br></pre></td></tr></table></figure>
-<h3 id="users_filed_in_datebase">users filed in datebase</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;    &#34;_id&#34; : &#34;8CoDmspe8BmwHjAXD&#34;,&#10;    &#34;createdAt&#34; : ISODate(&#34;2015-10-19T08:45:25.791Z&#34;),&#10;    &#34;services&#34; : &#123;&#10;        &#34;password&#34; : &#123;&#10;            &#34;bcrypt&#34; : &#34;$2a$10$gElhcQhAx2tIZ9FjrFuB1euZEKhJLx5VYFGJL1HRGrWvBhC/RrMFS&#34;&#10;        &#125;,&#10;        &#34;resume&#34; : &#123;&#10;            &#34;loginTokens&#34; : [&#10;                &#123;&#10;                    &#34;when&#34; : ISODate(&#34;2015-10-13T02:44:28.523Z&#34;),&#10;                    &#34;hashedToken&#34; : &#34;wSyL6wU0l4ABDFeNTNpPoi1MbiioJvQNCNLEglQ6Zgs=&#34;&#10;                &#125;&#10;            ]&#10;        &#125;&#10;    &#125;,&#10;    &#34;username&#34; : &#34;test&#34;,&#10;    &#34;emails&#34; : [&#10;        &#123;&#10;            &#34;address&#34; : &#34;test@qq.com&#34;,&#10;            &#34;verified&#34; : false&#10;        &#125;&#10;    ],&#10;    &#34;profile&#34; : &#123;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p> 标准的users 表中一条记录的结构，</p>
-<ul>
-<li>resume </li>
-</ul>
-<h3 id="模板">模板</h3><ul>
-<li>在模板中渲染某个数组指定下标的元素，如渲染用户系统数据的第一个邮箱<code>this.emails.[0].address</code></li>
-</ul>
+<p>编译需要的相关依赖</p>
+<blockquote>
+<p>openssl: 1.0.2h_1，如果没有安装，需要先<code>brew install openssl</code><br>pcre: 8.37，同上需要安装</p>
+</blockquote>
+<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/opt/openresty \&#10;--with-cc-opt=&#34;-I/usr/local/Cellar/pcre/8.37/include/&#34; \&#10;--with-luajit --without-http_redis2_module --with-ld-opt=&#34;-L/usr/local/lib&#34; \&#10;--with-openssl=/Users/xiongjie/Downloads/openssl-1.0.2h --with-pcre</span><br></pre></td></tr></table></figure></p>
+<p>编译完成之后make，make install.</p>
+<p>问题主要是出在编译 Nginx 的时候，如果make出现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: symbol(s) not found for architecture x86_64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&#10;make[1]: *** [objs/nginx] Error 1&#10;make: *** [build] Error 2</span><br></pre></td></tr></table></figure></p>
+<p>注意configure命令，–with-pcre 后面不需要参数，官方文档</p>
+<blockquote>
+<p>–with-pcre=*path<br>  sets the path to the sources of the PCRE library. The library distribution (version 4.4 — 8.21)<br>  needs to be downloaded from the PCRE site and extracted. The rest is done by NGINX’s ./configure and make.<br>  The library is required for regular expressions support in the location directive and for<br>  the ngx_http_rewrite_module. See notes below for using system PCRE on FreeBSD systems.<br>可能是版本问题导致，我安装的版本比官方文档建议的高，编译的时候设置路径就编译的文件就不能正常安装。</p>
+</blockquote>
 
       
     </div>
@@ -356,7 +324,9 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/Mac/" rel="tag">#Mac</a>
+          
+            <a href="/tags/openresty/" rel="tag">#openresty</a>
           
         </div>
       
@@ -365,16 +335,16 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/29/meteor-blaze/" rel="next" title="关于 Meteor reactive 库 Blaze">
-                <i class="fa fa-chevron-left"></i> 关于 Meteor reactive 库 Blaze
+              <a href="/2016/08/12/20150707-after-read-clean-code/" rel="next" title="读《代码整洁之道》一些总结">
+                <i class="fa fa-chevron-left"></i> 读《代码整洁之道》一些总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/28/meteor-tips/" rel="prev" title="Meteor 包管理机制">
-                Meteor 包管理机制 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/14/20160814-Openresty+Lua搭建网站实例/" rel="prev" title="如何用 openresty + lua 快速搭建一个简单网站">
+                如何用 openresty + lua 快速搭建一个简单网站 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -443,7 +413,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -460,7 +430,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -489,7 +459,7 @@ forbidClientAccountCreation：布尔值。为真时，client 端调用的Account
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accounts-config_&&_Accounts-ui-config"><span class="nav-number">1.</span> <span class="nav-text">Accounts.config && Accounts.ui.config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#publish_and_subscribe_Meteor-users"><span class="nav-number">2.</span> <span class="nav-text">publish and subscribe Meteor.users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#users_filed_in_datebase"><span class="nav-number">3.</span> <span class="nav-text">users filed in datebase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板"><span class="nav-number">4.</span> <span class="nav-text">模板</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
         </section>
