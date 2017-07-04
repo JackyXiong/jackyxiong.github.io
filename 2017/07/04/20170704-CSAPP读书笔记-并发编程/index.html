@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,openresty," />
+  <meta name="keywords" content="笔记," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta name="description" content="首先理解什么是并发？并发是两个或两个以上的执行实例（进程或线程），在单个CPU上交替执行，A开始执行，由于异常事件的发生CPU暂停A执行，开始执行B。B由于异常事件也被暂停执行，CPU重新开始执行A。两个执行实例交替执行时在时间上是有交叉的，这种情况称为并发。他们的执行过程在逻辑上是并发的，但是在物理上依然是串行的。并行是某个时刻有多个执行实例在CPU上执行，并行一般是在多核CPU或者多处理器发生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac 安装openresty 问题记录">
-<meta property="og:url" content="jackyxiong.github.io/2016/08/12/20160812-Mac openresty 安装问题/index.html">
+<meta property="og:title" content="CSAPP读书笔记-并发编程">
+<meta property="og:url" content="jackyxiong.github.io/2017/07/04/20170704-CSAPP读书笔记-并发编程/index.html">
 <meta property="og:site_name" content="JackySay">
-<meta property="og:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
-<meta property="og:updated_time" content="2016-08-12T04:16:58.000Z">
+<meta property="og:description" content="首先理解什么是并发？并发是两个或两个以上的执行实例（进程或线程），在单个CPU上交替执行，A开始执行，由于异常事件的发生CPU暂停A执行，开始执行B。B由于异常事件也被暂停执行，CPU重新开始执行A。两个执行实例交替执行时在时间上是有交叉的，这种情况称为并发。他们的执行过程在逻辑上是并发的，但是在物理上依然是串行的。并行是某个时刻有多个执行实例在CPU上执行，并行一般是在多核CPU或者多处理器发生">
+<meta property="og:updated_time" content="2017-07-04T15:16:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac 安装openresty 问题记录">
-<meta name="twitter:description" content="最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。过程中遇到不少问题，记录下来。Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。">
+<meta name="twitter:title" content="CSAPP读书笔记-并发编程">
+<meta name="twitter:description" content="首先理解什么是并发？并发是两个或两个以上的执行实例（进程或线程），在单个CPU上交替执行，A开始执行，由于异常事件的发生CPU暂停A执行，开始执行B。B由于异常事件也被暂停执行，CPU重新开始执行A。两个执行实例交替执行时在时间上是有交叉的，这种情况称为并发。他们的执行过程在逻辑上是并发的，但是在物理上依然是串行的。并行是某个时刻有多个执行实例在CPU上执行，并行一般是在多核CPU或者多处理器发生">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title> Mac 安装openresty 问题记录 | JackySay </title>
+  <title> CSAPP读书笔记-并发编程 | JackySay </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -178,7 +178,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            首頁
           </a>
         </li>
       
@@ -188,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            歸檔
           </a>
         </li>
       
@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            標籤
           </a>
         </li>
       
@@ -240,7 +240,7 @@
             
             
               
-                Mac 安装openresty 问题记录
+                CSAPP读书笔记-并发编程
               
             
           </h1>
@@ -251,9 +251,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T12:16:58+08:00" content="2016-08-12">
-              2016-08-12
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2017-07-04T23:16:07+08:00" content="2017-07-04">
+              2017-07-04
             </time>
           </span>
 
@@ -263,11 +263,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">code</span>
+                  <a href="/categories/reading/" itemprop="url" rel="index">
+                    <span itemprop="name">reading</span>
                   </a>
                 </span>
 
@@ -282,8 +282,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/12/20160812-Mac openresty 安装问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/20160812-Mac openresty 安装问题/" itemprop="commentsCount"></span>
+                <a href="/2017/07/04/20170704-CSAPP读书笔记-并发编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/04/20170704-CSAPP读书笔记-并发编程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -306,19 +306,22 @@
       
 
       
-        <p>最近开始学习 openresty 相关的东西，了解了基本的 lua 语法自然需要安装 openresty 了。<br>过程中遇到不少问题，记录下来。<br>Mac 的系统版本是 EI Capitan 10.11.6，openresty 版本是1.9.15.1。</p>
-<a id="more"></a>
-<p>编译需要的相关依赖</p>
-<blockquote>
-<p>openssl: 1.0.2h_1，如果没有安装，需要先<code>brew install openssl</code><br>pcre: 8.37，同上需要安装</p>
-</blockquote>
-<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/opt/openresty \&#10;--with-cc-opt=&#34;-I/usr/local/Cellar/pcre/8.37/include/&#34; \&#10;--with-luajit --without-http_redis2_module --with-ld-opt=&#34;-L/usr/local/lib&#34; \&#10;--with-openssl=/Users/xiongjie/Downloads/openssl-1.0.2h --with-pcre</span><br></pre></td></tr></table></figure></p>
-<p>编译完成之后make，make install.</p>
-<p>问题主要是出在编译 Nginx 的时候，如果make出现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: symbol(s) not found for architecture x86_64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&#10;make[1]: *** [objs/nginx] Error 1&#10;make: *** [build] Error 2</span><br></pre></td></tr></table></figure></p>
-<p>注意configure命令，–with-pcre 后面不需要参数，官方文档</p>
-<blockquote>
-<p>–with-pcre=*path<br>  sets the path to the sources of the PCRE library. The library distribution (version 4.4 — 8.21)<br>  needs to be downloaded from the PCRE site and extracted. The rest is done by NGINX’s ./configure and make.<br>  The library is required for regular expressions support in the location directive and for<br>  the ngx_http_rewrite_module. See notes below for using system PCRE on FreeBSD systems.<br>可能是版本问题导致，我安装的版本比官方文档建议的高，编译的时候设置路径就编译的文件就不能正常安装。</p>
-</blockquote>
+        <p>首先理解什么是并发？并发是两个或两个以上的执行实例（进程或线程），在单个CPU上交替执行，A开始执行，由于异常事件的发生<br>CPU暂停A执行，开始执行B。B由于异常事件也被暂停执行，CPU重新开始执行A。两个执行实例交替执行时在时间上是有交叉的，这种情况称为并发。<br>他们的执行过程在逻辑上是并发的，但是在物理上依然是串行的。并行是某个时刻有多个执行实例在CPU上执行，并行一般是在多核CPU或者多处理器发生。</p>
+<p>现代操作系统提供了3种并发编程的方式：进程级并发，IO多路复用技术，和线程级并发。<br><a id="more"></a></p>
+<p>基于进程级并发<br>使用进程并发的常见场景是，一个程序用来处理某类事件A，每当A发生，父进程就创建一个子进程来处理。<br>进程并发的优点是父子进程可以共享fork之前已经打开文件描述符，但是缺点是由于不共享地址空间，<br>进程控制（创建销毁）和进程间通信的开销很高。</p>
+<p>基于IO多路复用并发<br>一个服务器程序需要根据用户输入进行响应。在操作系统层面，这个程序需要监听连接和输入两个IO事件。<br>基于操作系统提供的IO多路复用技术，利用select函数将进程挂起，当事件发生时才将控制权交给应用程序，处理事件。<br>操作系统提供了select, poll, epoll 等技术来支持多路复用。<br>这种方式的优点是程序运行在单进程内，每个逻辑流都能访问进程的地址空间，可以很方便的共享数据；同时减少了切换进程等无谓的开销。<br>但是与进程并发比较，这种方式编码实现上较复杂。</p>
+<p>基于线程并发<br>线程执行模型是这样，操作系统提供了线程，CPU运行的最小单位实际上是某个进程内的某个线程，而同一个进程的线程又可以共享该进程的地址空间的内容，<br>包括代码数据堆共享库和打开的文件。进程开始执行时是单一线程执行，然后主线程开始创建其他线程，线程开始并发运行（实际上同一时刻还是只要唯一的一个线程运行）。<br>同一个进程的线程之间是平等关系，组成了一个线程池，大家都能读写相同的数据。<br>线程这种方式，可以说是前面两种方式的混合，通过代码将不同的逻辑流包装在不同的线程，处理对应的事件，而线程之间可以共享地址空间，又减少进程切换。极大的提高了性能</p>
+<h1 id="Posix_线程标准">Posix 线程标准</h1><p>这是C程序中处理线程的一个标准接口，提供了创建、杀死回收线程等近60个函数。在这里就不在描述接口细节。</p>
+<p>多线程程序的共享变量<br>理想的线程的存储器模型：一组并发线程都运行在进程的上下文，每个线程都有自己的上下文，包括线程ID、栈、栈指针、程序计数器、条件码和寄存器。线程之间共享进程上下文的剩余部分。<br>实际的模型是，寄存器的值是被保护的，线程不能访问其他线程的寄存器，但是线程栈被保存在进程的虚拟地址空间的栈区域，对其他线程来说是可访问的。</p>
+<p>有关于变量的几个概念：<br>全局变量：定义在函数之外的变量。虚拟存储器上只有一个变量实例，任何进程都可访问。<br>本地自动变量：定义在函数内，没有被声明为static的变量。运行时每个线程都有自己的本地自动变量的实例，相互隔离。<br>本地静态变量：定义在函数内部，声明为static属性。同全局变量。</p>
+<p>共享变量对多线程的程序很方便，线程之间对共享数据可同步访问，但是引入了同步错误。多个线程在对同一个共享变量操作时，由于线程进入临界区的顺序不一致，无法得到一个期望的运行结果。<br>为了解决这一问题，需要对共享变量互斥访问。信号量PV操作的提出解决了这一问题。信号量也能解决同步问题。</p>
+<p>除了生产者消费者同步问题和临界区互斥问题，还有其他的线程并发问题。</p>
+<p>线程安全：<br>简单来说，一个函数是线程安全，意味着多个并发线程执行这个函数，函数会一直产生正确的结果。以下几类函数就不是线程安全的。有以下4类非线程安全的函数：<br>1.不保护共享变量的函数</p>
+<p>2.函数执行依赖于被修改的全局对象的函数</p>
+<p>3.返回指向静态变量指针的函数（在使用时，指针指向的地址的值被修改）</p>
+<p>4调用线程不安全函数的函数。</p>
+<p>可重入函数<br>当他们被调用时不会引用任何共享数据。是线程安全函数的真子集。因为不引用任何共享数据，自然是线程安全的。如何判断函数是否是可重入函数呢？如果函数参数都是值传递（没有指针），并且所有数据引用都是本地自动变量，函数就是显示可重入的；而如果函数参数允许传递指针，则是隐式可重入的。因为这依赖于调用函数的代码是否传递了共享数据的指针。</p>
+<p>一些已知库函数的使用<br>大多数Unix库函数都是线程安全，但是有一部分不是。这部分非线程安全的函数，除了rand和strtok，大多数是第三类，调用时需要加锁-拷贝。加锁-拷贝对于繁华复杂结构指针的函数，深层次拷贝比较消耗资源。</p>
 
       
     </div>
@@ -361,9 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
-          
-            <a href="/tags/openresty/" rel="tag">#openresty</a>
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
           
         </div>
       
@@ -372,17 +373,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/12/20150707-after-read-clean-code/" rel="next" title="读《代码整洁之道》一些总结">
-                <i class="fa fa-chevron-left"></i> 读《代码整洁之道》一些总结
+              <a href="/2017/05/18/20160812-Mac openresty 安装问题/" rel="next" title="Mac 安装openresty 问题记录">
+                <i class="fa fa-chevron-left"></i> Mac 安装openresty 问题记录
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/14/20160814-Openresty+Lua搭建网站实例/" rel="prev" title="如何用 openresty + lua 快速搭建一个简单网站">
-                如何用 openresty + lua 快速搭建一个简单网站 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -397,10 +394,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/08/12/20160812-Mac openresty 安装问题/"
-     data-title="Mac 安装openresty 问题记录"
+        <div class="ds-share flat" data-thread-key="2017/07/04/20170704-CSAPP读书笔记-并发编程/"
+     data-title="CSAPP读书笔记-并发编程"
      data-content=""
-     data-url="jackyxiong.github.io/2016/08/12/20160812-Mac openresty 安装问题/">
+     data-url="jackyxiong.github.io/2017/07/04/20170704-CSAPP读书笔记-并发编程/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -427,8 +424,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/12/20160812-Mac openresty 安装问题/"
-           data-title="Mac 安装openresty 问题记录" data-url="jackyxiong.github.io/2016/08/12/20160812-Mac openresty 安装问题/">
+      <div class="ds-thread" data-thread-key="2017/07/04/20170704-CSAPP读书笔记-并发编程/"
+           data-title="CSAPP读书笔记-并发编程" data-url="jackyxiong.github.io/2017/07/04/20170704-CSAPP读书笔记-并发编程/">
       </div>
     
   </div>
@@ -454,10 +451,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            文章目錄
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            本站概覽
           </li>
         </ul>
       
@@ -473,16 +470,16 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分類</span>
               
             </div>
           
@@ -490,8 +487,8 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">標籤</span>
               </a>
             </div>
           
@@ -548,7 +545,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Posix_线程标准"><span class="nav-number">1.</span> <span class="nav-text">Posix 线程标准</span></a></li></ol></div>
             
           </div>
         </section>
@@ -575,11 +572,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
-  主题 -
+  主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
