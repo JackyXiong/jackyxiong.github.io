@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta name="description" content="时间序列数据库 Influxdb 入门以下内容基于influxdb 1.3influxdb 有一套自己的查询语法，和sql很像，1&amp;#60;measurement&amp;#62;[,&amp;#60;tag-key&amp;#62;=&amp;#60;tag-value&amp;#62;...] &amp;#60;field-key&amp;#62;=&amp;#60;field-value&amp;#62;[,&amp;#60;field2-key&amp;#62;=&amp;#60;f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django Message module introduce">
-<meta property="og:url" content="jackyxiong.github.io/2016/07/20/20160720-Django-message-module/index.html">
+<meta property="og:title" content="《Influxdb 入门》">
+<meta property="og:url" content="jackyxiong.github.io/2017/07/27/20170727-explore-Influxdb/index.html">
 <meta property="og:site_name" content="JackySay">
-<meta property="og:description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
-<meta property="og:updated_time" content="2016-07-20T05:09:57.000Z">
+<meta property="og:description" content="时间序列数据库 Influxdb 入门以下内容基于influxdb 1.3influxdb 有一套自己的查询语法，和sql很像，1&amp;#60;measurement&amp;#62;[,&amp;#60;tag-key&amp;#62;=&amp;#60;tag-value&amp;#62;...] &amp;#60;field-key&amp;#62;=&amp;#60;field-value&amp;#62;[,&amp;#60;field2-key&amp;#62;=&amp;#60;f">
+<meta property="og:updated_time" content="2017-07-27T07:58:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django Message module introduce">
-<meta name="twitter:description" content="Django Message 是什么?
-Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。
-主要用于显示一个使用后即销毁的通知消息给用户。">
+<meta name="twitter:title" content="《Influxdb 入门》">
+<meta name="twitter:description" content="时间序列数据库 Influxdb 入门以下内容基于influxdb 1.3influxdb 有一套自己的查询语法，和sql很像，1&amp;#60;measurement&amp;#62;[,&amp;#60;tag-key&amp;#62;=&amp;#60;tag-value&amp;#62;...] &amp;#60;field-key&amp;#62;=&amp;#60;field-value&amp;#62;[,&amp;#60;field2-key&amp;#62;=&amp;#60;f">
 
 
 
@@ -117,7 +111,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
   };
 </script>
 
-  <title> Django Message module introduce | JackySay </title>
+  <title> 《Influxdb 入门》 | JackySay </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
@@ -246,7 +240,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
             
             
               
-                Django Message module introduce
+                《Influxdb 入门》
               
             
           </h1>
@@ -258,38 +252,19 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T13:09:57+08:00" content="2016-07-20">
-              2016-07-20
+            <time itemprop="dateCreated" datetime="2017-07-27T15:58:34+08:00" content="2017-07-27">
+              2017-07-27
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python-Django/" itemprop="url" rel="index">
-                    <span itemprop="name">Python Django</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/20/20160720-Django-message-module/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/20160720-Django-message-module/" itemprop="commentsCount"></span>
+                <a href="/2017/07/27/20170727-explore-Influxdb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/27/20170727-explore-Influxdb/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -312,73 +287,29 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
       
 
       
-        <h1 id="Django_Message_是什么?">Django Message 是什么?</h1><ul>
-<li>Django 内部一个基于Cookie和Session的消息框架，实现基于中间件。</li>
-<li>主要用于显示一个使用后即销毁的通知消息给用户。</li>
-</ul>
+        <h1 id="时间序列数据库_Influxdb_入门">时间序列数据库 Influxdb 入门</h1><p>以下内容基于influxdb 1.3<br>influxdb 有一套自己的查询语法，和sql很像，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;measurement&#62;[,&#60;tag-key&#62;=&#60;tag-value&#62;...] &#60;field-key&#62;=&#60;field-value&#62;[,&#60;field2-key&#62;=&#60;field2-value&#62;...] [unix-nano-timestamp]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert cpu1,host=1,test=11 value=3,a=1 1500986114</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="使用">使用</h1><ul>
-<li>settings<ul>
-<li>installed_app</li>
-<li>middleware</li>
-<li>tempalte</li>
+<h4 id="基本概念">基本概念</h4><ul>
+<li>measurement: 类似于SQL中的表</li>
+<li>field: 包含field-key/field-value, 类似于sql的字段/值，用来存储真正的数据项。在influxdb中，field是不被索引的，查询使用filed进行过滤会遍历全部数据来查询，效率不高。</li>
+<li>tag: 包含 tag-key/tag-value，和field相反，tag在influxdb中是被索引的。</li>
+<li>fields-set: 由多个field-key=field-value组成的field集合</li>
+<li>tag-set: 由多个tag-key=tag-value组成的tag集合</li>
+<li>point: 由一个timestamp所产生的数据的集合。可以看作是sql数据库的一个doc。</li>
+<li>Continuous Query(cq): 持续查询机制，一个influxdb会自动的周期性执行的查询语句。这个机制可将查询计算的结果，存入新的 measurement。<br>若原始数据是每秒写入，但是查询前一天的数据使用者并不关心每秒这么小的维度，使用这种机制将维度小的数据汇总成维度大一点的数据，<br>而在使用时不需要查询所有相关原始数据进行计算。</li>
+<li>Retention Policy(rp): 保留策略，时间序列数据的一大特征就是结构简单且数据量大，influxdb提供了一种机制用于历史数据的处理，按照指定的逻辑自动清理过期数据。</li>
+<li>series:由measurement, tag-set, rp 都相同的数据组成的一组数据。</li>
 </ul>
-</li>
-</ul>
-<h1 id="由哪些组成？">由哪些组成？</h1><ul>
-<li><p>api</p>
+<h4 id="RP_机制">RP 机制</h4><p>创建RP: <code>CREATE RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt; DURATION &lt;duration&gt; REPLICATION &lt;n&gt; [SHARD DURATION &lt;duration&gt;] [DEFAULT]</code><br>修改RP: <code>ALTER RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt; DURATION &lt;duration&gt; REPLICATION &lt;n&gt; SHARD DURATION &lt;duration&gt; DEFAULT</code><br>删除RP: <code>DROP RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt;</code></p>
+<h4 id="CQ_机制">CQ 机制</h4><p>创建cq：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE CONTINUOUS QUERY &#60;cq_name&#62; ON &#60;database_name&#62;&#10;RESAMPLE EVERY interval FOR interval&#10;BEGIN&#10;  SELECT &#60;function[s]&#62; INTO &#60;destination_measurement&#62; FROM &#60;measurement&#62; [WHERE &#60;stuff&#62;] GROUP BY time(&#60;interval&#62;)[,&#60;tag_key[s]&#62;]&#10;END</span><br></pre></td></tr></table></figure></p>
+<p>这里有几点需要注意，destination_measurement可设置为其他db的measurement。cq不能修改，只能删除重建。<br>EVERY FOR TIME 的几种情况</p>
 <ul>
-<li>一些直接使用的函数：add_message/get_message<br><code>add_message(request, messages.INFO, &#39;Hello world.&#39;)</code></li>
-<li>包装 add_message 的函数，debug，info，success，waring，error。类似于日志级别<br><code>info(request, &#39;Hello world.&#39;)</code></li>
-<li>set_level / get_level 设置消息的级别<br><code>set_level(request, messages.DEBUG)</code><br><code>get_level(request)</code></li>
+<li>every(30m) time(1h)：每30分钟resample一次以1h为间隔的数据。如8:30时计算8:00-9:00的数据，9:00时在计算一次8:00-9:00的数据</li>
+<li>for(1h) time(30m):每一个小时resample一次以30m为间隔的时间。如8:00计算7:00-8:00，以30m间隔的数据，得到2条结果，8:30时计算7：30-8：30的数据，以30m间隔的数据，得到2条结果。</li>
+<li>every(1h) for(90m) time(30m)：每小时计算一次，以30m为间隔，倒推90m的数据，所以会获取3条结果</li>
 </ul>
-</li>
-<li><p>constant</p>
-<ul>
-<li>debug，info，success，waring，error</li>
-</ul>
-</li>
-<li><p>中间件</p>
-<ul>
-<li>请求处理：reqeust 对象添加_messages 属性（storage对象）</li>
-<li>响应处理：存储消息（写cookie，写session等）</li>
-</ul>
-</li>
-<li><p>context_processor 上下文处理器</p>
-<ul>
-<li>message 函数，Django后端渲染模板时，调用该函数得到相关的消息，模板内可使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if messages %&#125;&#10;&#60;ul class=&#34;messages&#34;&#62;&#10;    &#123;% for message in messages %&#125;&#10;    &#60;li&#123;% if message.tags %&#125; class=&#34;&#123;&#123; message.tags &#125;&#125;&#34;&#123;% endif %&#125;&#62;&#123;&#123; message &#125;&#125;&#60;/li&#62;&#10;    &#123;% endfor %&#125;&#10;&#60;/ul&#62;&#10;&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>view</p>
-<ul>
-<li>FormView 的 mixin 类</li>
-</ul>
-</li>
-<li><p>Storage</p>
-<ul>
-<li>Message class：消息实体，提供消息相关的函数</li>
-<li><p>BaseStorage</p>
-<ul>
-<li>add：往消息队列写入level低于默认level的消息，</li>
-<li>update：调用_store方法，将消息存储到对应的backend</li>
-<li>_store</li>
-<li>_get：模板渲染时被调用，获取消息实体</li>
-</ul>
-</li>
-<li><p>CookieStorage:继承，实现_store/ _get，</p>
-</li>
-<li>SessionStorage:继承，实现 _store/_get</li>
-<li>FallbackStorage：Django setting 默认，同时使用cookie和session的存储。</li>
-</ul>
-</li>
-<li><p>设计</p>
-<ul>
-<li>接口简单</li>
-<li>扩展容易</li>
-</ul>
-</li>
-</ul>
+<p>联合使用 CQ RP 机制很好的解决了时间序列数据，数据量大，容易迅速对数据库存储造成压力的问题。很多监控数据在使用时，随着时间的变化，对很久之前的数据的精度要求不高，只需要有一些数据能够将趋势反应出来，在这种场景下，CQ RP机制就很合适。另外，数据在使用时，时常会有一些复杂需求需要对大量的数据进行复杂的计算，通过CQ机制将这部分数据预处理，得出结果之后存储，使用时直接查询获取，不需要复杂计算，大大提高数据的可用性。</p>
 
       
     </div>
@@ -430,17 +361,13 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/04/20160504-django-middleware/" rel="next" title="Django middleware 使用">
-                <i class="fa fa-chevron-left"></i> Django middleware 使用
+              <a href="/2017/07/04/20170704-CSAPP读书笔记-并发编程/" rel="next" title="CSAPP读书笔记-并发编程">
+                <i class="fa fa-chevron-left"></i> CSAPP读书笔记-并发编程
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/12/20150707-after-read-clean-code/" rel="prev" title="读《代码整洁之道》一些总结">
-                读《代码整洁之道》一些总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -455,10 +382,10 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/07/20/20160720-Django-message-module/"
-     data-title="Django Message module introduce"
+        <div class="ds-share flat" data-thread-key="2017/07/27/20170727-explore-Influxdb/"
+     data-title="《Influxdb 入门》"
      data-content=""
-     data-url="jackyxiong.github.io/2016/07/20/20160720-Django-message-module/">
+     data-url="jackyxiong.github.io/2017/07/27/20170727-explore-Influxdb/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -485,8 +412,8 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/20/20160720-Django-message-module/"
-           data-title="Django Message module introduce" data-url="jackyxiong.github.io/2016/07/20/20160720-Django-message-module/">
+      <div class="ds-thread" data-thread-key="2017/07/27/20170727-explore-Influxdb/"
+           data-title="《Influxdb 入门》" data-url="jackyxiong.github.io/2017/07/27/20170727-explore-Influxdb/">
       </div>
     
   </div>
@@ -606,7 +533,7 @@ Django 内部一个基于Cookie和Session的消息框架，实现基于中间件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django_Message_是什么?"><span class="nav-number">1.</span> <span class="nav-text">Django Message 是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#由哪些组成？"><span class="nav-number">3.</span> <span class="nav-text">由哪些组成？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间序列数据库_Influxdb_入门"><span class="nav-number">1.</span> <span class="nav-text">时间序列数据库 Influxdb 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RP_机制"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">RP 机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CQ_机制"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">CQ 机制</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
